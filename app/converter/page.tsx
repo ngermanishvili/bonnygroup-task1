@@ -1,7 +1,18 @@
 "use client";
-import {Button} from "@/components/ui/button";
-import React, {useEffect, useState} from "react";
+import { Button } from "@/components/ui/button";
+import React, { useEffect, useState } from "react";
 import useConverterStore from "./converterStore"; // Import the Zustand store
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+
 
 interface CryptoData {
   data: {
@@ -20,7 +31,7 @@ interface ConverterProps {
   cryptoData: CryptoData;
 }
 
-const Converter: React.FC<ConverterProps> = ({cryptoData}) => {
+const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
   const {
     baseCoin,
     compareCoin,
@@ -62,7 +73,7 @@ const Converter: React.FC<ConverterProps> = ({cryptoData}) => {
         const compareCoinData = cryptoData.data[compareCoinIndex];
         const newExchangeRate =
           baseCoinData.quote.USD.price / compareCoinData.quote.USD.price;
-        useConverterStore.setState({exchangeRate: newExchangeRate});
+        useConverterStore.setState({ exchangeRate: newExchangeRate });
       }
     }
   }, [baseCoin, compareCoin, cryptoData]);
@@ -114,31 +125,69 @@ const Converter: React.FC<ConverterProps> = ({cryptoData}) => {
   return (
     <div>
       <h1>Converter Calculator</h1>
-      <form>
-        <label htmlFor="baseCoin">Base Coin:</label>
-        <select id="baseCoin" value={baseCoin} onChange={handleBaseCoinChange}>
-          {cryptoData.data.map((coin) => (
-            <option key={coin.id} value={coin.id}>
-              {coin.name} ({coin.symbol})
-            </option>
-          ))}
-        </select>
-        <br />
-        <label htmlFor="compareCoin">Compare Coin:</label>
-        <select
-          id="compareCoin"
-          value={compareCoin}
-          onChange={handleCompareCoinChange}
-        >
-          {cryptoData.data.map((coin) => (
-            <option key={coin.id} value={coin.id}>
-              {coin.name} ({coin.symbol})
-            </option>
-          ))}
-        </select>
+      <div>
+        <Select>
+          <SelectTrigger className="w-[280px]">
+            <SelectValue placeholder="Select a base coin" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Base Coin</SelectLabel>
+              {cryptoData.data.map((coin) => (
+                <SelectItem key={coin.id} value={coin.id} onClick={() => handleBaseCoinChange}>
+                  {coin.name} ({coin.symbol})
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+
+        <Select >
+          <SelectTrigger className="w-[280px]">
+            <SelectValue placeholder="Select a timezone" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>COINS</SelectLabel>
+              {cryptoData.data.map((coin) => (
+
+                <SelectItem key={coin.id} value={coin.id}>
+                  {coin.name} ({coin.symbol})
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+
+
+
+        <div className=" mt-10">
+          <label className="" htmlFor="baseCoin">Base Coin:</label>
+          {/* <select id="baseCoin" value={baseCoin} onChange={handleBaseCoinChange}>
+            {cryptoData.data.map((coin) => (
+              <option className="text-black font-md" key={coin.id} value={coin.id}>
+                {coin.name} ({coin.symbol})
+              </option>
+            ))}
+          </select> */}
+          <br />
+          <label htmlFor="compareCoin">Compare Coin:</label>
+          <select
+            id="compareCoin"
+            value={compareCoin}
+            onChange={handleCompareCoinChange}
+          >
+            {cryptoData.data.map((coin) => (
+              <option key={coin.id} value={coin.id}>
+                {coin.name} ({coin.symbol})
+              </option>
+            ))}
+          </select>
+        </div>
         <br />
         <label htmlFor="baseCoinAmount">Amount in Base Coin:</label>
         <input
+          className="bg-red-400"
           type="number"
           id="baseCoinAmount"
           value={baseCoinAmount}
@@ -146,16 +195,16 @@ const Converter: React.FC<ConverterProps> = ({cryptoData}) => {
         />
         <br />
         <Button type="button">Convert</Button>
-      </form>
+      </div>
       <p>
         {baseCoinAmount.toFixed(2)} {baseCoinData.symbol} is equal to{" "}
         {amountInCompareCoin.toFixed(2)} {compareCoinData.symbol}
       </p>
-    </div>
+    </div >
   );
 };
 const ConverterPage: React.FC = () => {
-  const [cryptoData, setCryptoData] = useState<CryptoData | null>({data: []});
+  const [cryptoData, setCryptoData] = useState<CryptoData | null>({ data: [] });
 
   useEffect(() => {
     async function fetchData() {
