@@ -13,6 +13,7 @@ function useCryptoData() {
             try {
                 const response = await axios.get("/api/coinmarket");
                 setCryptoData(response.data);
+                console.log("Data fetched:", response.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
 

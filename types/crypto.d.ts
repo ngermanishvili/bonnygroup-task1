@@ -1,6 +1,6 @@
+// Assuming that the id in the CryptoDataType interface is optional
 export interface CryptoDataType {
-    [x: string]: any;
-    id: any;
+    id?: number;
     data: CryptoData[];
 }
 
@@ -8,7 +8,6 @@ export interface CryptoData {
     id: string;
     name: string;
     symbol: string;
-    price: number;
     percent_change_1h: number;
     percent_change_24h: number;
     percent_change_7d: number;
@@ -20,3 +19,13 @@ export interface CryptoData {
         };
     };
 }
+
+// Adjust your useState initialization to match the interface
+const [cryptoData, setCryptoData] = useState<CryptoDataType>({ data: [] });
+
+// Assuming you're not using the 'id' property in your application logic, you can ignore it
+// when setting the state
+setCryptoData({ data: response.data });
+
+// Or if you need to assign a default value to the 'id' property
+setCryptoData({ id: 0, data: response.data });
