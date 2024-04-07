@@ -6,6 +6,7 @@ import { HeroHighlightDemo } from '@/components/landing/hero';
 import type { CryptoDataType } from '@/types/crypto';
 import numeral from 'numeral';
 import LivePrice from '@/components/liveprice/page';
+import CandlestickChart from './test/page';
 
 export default function Cryptos() {
   const [data, setData] = useState<CryptoDataType[] | null>(null);
@@ -38,9 +39,17 @@ export default function Cryptos() {
 
   return (
     <div>
-      <LivePrice />
+
       <HeroHighlightDemo />
-      <CryptoTable data={data} />
+      <div className='w-full p-20 rounded-sm'>
+        <div className='m-4'>
+          <LivePrice />
+        </div>
+        <CandlestickChart />
+        <CryptoTable data={data} />
+      </div>
+
+
     </div>
   );
 }

@@ -1,9 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "../ui/hero-highlight";
-import { GlobeDemo } from "./globe";
-import { LampDemo } from "./lamp-landing";
-import CandlestickChart from "@/app/test/page";
+
 
 export function HeroHighlightDemo() {
     return (
@@ -31,9 +29,7 @@ export function HeroHighlightDemo() {
                 </motion.h1>
 
             </HeroHighlight>
-            <div className="w-full h-500px] overflow-x-auto cursor-pointer p-2">
-                <CandlestickChart />
-            </div>
+
 
 
             {/* <GlobeDemo /> */}
