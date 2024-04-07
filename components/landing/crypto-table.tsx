@@ -84,7 +84,7 @@ const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
 
     return (
         <Table
-            rowKey={(record) => record.id.toString()}
+            rowKey={(record) => record.id?.toString() ?? ''}
             // onRow={(record: CryptoDataType) => ({
             //     onClick: () => handleRowClick(record),
             // })}
@@ -93,6 +93,7 @@ const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
             style={{ backgroundColor: '#f0f0f0' }} // Change background color as needed
 
         />
+
     );
 };
 
