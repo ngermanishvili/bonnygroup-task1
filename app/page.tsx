@@ -5,6 +5,7 @@ import CryptoTable from '@/components/landing/crypto-table';
 import { HeroHighlightDemo } from '@/components/landing/hero';
 import type { CryptoDataType } from '@/types/crypto';
 import numeral from 'numeral';
+import LivePrice from '@/components/liveprice/page';
 
 export default function Cryptos() {
   const [data, setData] = useState<CryptoDataType[] | null>(null);
@@ -29,17 +30,15 @@ export default function Cryptos() {
 
 
 
-
-
-
   if (!data) {
-    return <div>Loading...</div>;
+    return <div className='flex justify-center items-center'>
+      loading
+    </div>;
   }
 
   return (
     <div>
-
-
+      <LivePrice />
       <HeroHighlightDemo />
       <CryptoTable data={data} />
     </div>

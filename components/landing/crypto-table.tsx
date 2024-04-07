@@ -1,8 +1,10 @@
+"use client"
 import React from 'react';
 import { Table } from 'antd';
 import { useRouter } from 'next/navigation';
 import type { TableProps } from 'antd';
 import { CryptoDataType } from "@/types/crypto"
+import numeral from 'numeral';
 
 interface CryptoTableProps {
     data: CryptoDataType[];
@@ -10,6 +12,7 @@ interface CryptoTableProps {
 
 const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
     const router = useRouter();
+
 
     const handleRowClick = (record: CryptoDataType) => {
         router.push('/test');
@@ -31,7 +34,8 @@ const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
             title: 'Price',
             dataIndex: 'quote',
             key: 'price',
-            render: (quote) => `$${quote.USD.price.toFixed(2)}`,
+            render: (quote) => `$${(quote.USD.price).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}` //! regex to add commas to numbers for better readability
+
         },
 
         {
@@ -68,22 +72,22 @@ const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
             title: 'Market Cap',
             dataIndex: 'quote',
             key: 'market_cap',
-            render: (quote) => `$${quote.USD.market_cap.toFixed(2)}`,
+            render: (quote) => `$${quote.USD.market_cap.toLocaleString('en-US', { maximumFractionDigits: 2 })}`,
         },
         {
             title: 'Volume (24h)',
             dataIndex: 'quote',
             key: 'volume_24h',
-            render: (quote) => `$${quote.USD.volume_24h.toFixed(2)}`,
+            render: (quote) => `$${quote.USD.volume_24h.toLocaleString('en-US', { maximumFractionDigits: 2 })}`,
         },
     ];
 
     return (
         <Table
-
-            onRow={(record: CryptoDataType) => ({
-                onClick: () => handleRowClick(record),
-            })}
+            rowKey={(record) => record.id.toString()}
+            // onRow={(record: CryptoDataType) => ({
+            //     onClick: () => handleRowClick(record),
+            // })}
             columns={columns}
             dataSource={data}
             style={{ backgroundColor: '#f0f0f0' }} // Change background color as needed
