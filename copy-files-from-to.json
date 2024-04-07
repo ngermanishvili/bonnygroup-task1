@@ -10,6 +10,10 @@
     {
       "from": "./node_modules/scichart/_wasm/scichart2d.wasm",
       "to": ".next/static/chunks/app"
+    },
+    {
+      "from": "./node_modules/scichart/_wasm/scichart2d.wasm",
+      "to": ".next/static/chunks"
     }
   ]
 }
