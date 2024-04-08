@@ -1,7 +1,10 @@
+/* eslint-disable */
+
 "use client"
 
 import React, { useState, useEffect, useRef } from "react";
 
+/* eslint-disable */
 
 import {
     SciChartSurface,
@@ -44,6 +47,7 @@ const divElementId = "chart";
 const Y_AXIS_VOLUME_ID = "Y_AXIS_VOLUME_ID";
 
 // SCICHART EXAMPLE
+/* eslint-disable */
 
 const drawExample = async (coinId: any) => {
     // Create a SciChartSurface
@@ -130,13 +134,6 @@ const drawExample = async (coinId: any) => {
     // Fetch initial data for DOGE
     const priceBars = await simpleBinanceRestClient.getCandles(coinId, "1h", startDate, endDate);
 
-    const dogePriceBars = await simpleBinanceRestClient.getCandles("DOGEUSDT", "1h", startDate, endDate);
-
-    // Fetch data for Bitcoin
-    const btcPriceBars = await simpleBinanceRestClient.getCandles("BTCUSDT", "1h", startDate, endDate);
-
-    // Fetch data for Ethereum
-    const ethPriceBars = await simpleBinanceRestClient.getCandles("ETHUSDT", "1h", startDate, endDate);
 
     // Maps PriceBar { date, open, high, low, close, volume } to structure-of-arrays expected by scichart
     const xValues: number[] = [];
@@ -312,6 +309,7 @@ class VolumePaletteProvider implements IFillPaletteProvider {
         return this.overrideFillArgb(xValue, yValue, index, opacity, metadata);
     }
 }
+/* eslint-disable */
 
 // React component needed as our examples app is react.
 const CandlestickChart = ({ coinId }: { coinId: any }) => {
