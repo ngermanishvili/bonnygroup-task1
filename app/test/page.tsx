@@ -45,7 +45,7 @@ const Y_AXIS_VOLUME_ID = "Y_AXIS_VOLUME_ID";
 
 // SCICHART EXAMPLE
 
-const drawExample = async (coinId: any) => {
+const drawExample = async (coinId: string) => {
     // Create a SciChartSurface
 
     const { sciChartSurface, wasmContext } = await SciChartSurface.create(divElementId, {
@@ -315,7 +315,7 @@ class VolumePaletteProvider implements IFillPaletteProvider {
 }
 
 // React component needed as our examples app is react.
-const CandlestickChart = ({ coinId }: { coinId: any }) => {
+const CandlestickChart = ({ coinId }: { coinId: string }) => {
     const sciChartSurfaceRef = React.useRef<SciChartSurface>();
     const sciChartOverviewRef = React.useRef<SciChartOverview>();
     const [candlestickChartSeries, setCandlestickChartSeries] = React.useState<FastCandlestickRenderableSeries>();
