@@ -8,7 +8,11 @@ import LivePrice from '@/components/liveprice/page';
 import { CandlestickChart } from './test/page';
 import ConverterPage from './converter/page';
 
-export default function Cryptos({ coindId }: { coindId: any }) {
+
+interface CryptosProps {
+  coinId: any;
+}
+export const Cryptos: React.FC<CryptosProps> = ({ coinId }) => {
   const [data, setData] = useState<CryptoDataType[] | null>(null);
 
 
