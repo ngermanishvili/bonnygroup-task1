@@ -9,6 +9,7 @@ export default {
     },
     basePath: '',
     restrictMode: false, // Add this line to disable restrict mode
+    assetPrefix: '', // Remove asset prefix
 
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         // Note: we provide webpack above so you should not `require` it
