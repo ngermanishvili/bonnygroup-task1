@@ -45,7 +45,7 @@ const Y_AXIS_VOLUME_ID = "Y_AXIS_VOLUME_ID";
 
 // SCICHART EXAMPLE
 
-const drawExample = async (coinId: string) => {
+const drawExample = async (coinId: any) => {
     // Create a SciChartSurface
 
     const { sciChartSurface, wasmContext } = await SciChartSurface.create(divElementId, {
@@ -198,7 +198,6 @@ const drawExample = async (coinId: string) => {
         isVisible: false
     });
     sciChartSurface.renderableSeries.add(ohlcSeries);
-
     // Add some moving averages using SciChart's filters/transforms API
     // when candleDataSeries updates, XyMovingAverageFilter automatically recomputes
     sciChartSurface.renderableSeries.add(
@@ -315,7 +314,7 @@ class VolumePaletteProvider implements IFillPaletteProvider {
 }
 
 // React component needed as our examples app is react.
-const CandlestickChart = ({ coinId }: { coinId: string }) => {
+const CandlestickChart = ({ coinId }: { coinId: any }) => {
     const sciChartSurfaceRef = React.useRef<SciChartSurface>();
     const sciChartOverviewRef = React.useRef<SciChartOverview>();
     const [candlestickChartSeries, setCandlestickChartSeries] = React.useState<FastCandlestickRenderableSeries>();
