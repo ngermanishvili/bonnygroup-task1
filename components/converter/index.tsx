@@ -56,9 +56,10 @@ export const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
         setBaseCoinAmount: state.setBaseCoinAmount,
     }));
 
+
     const [isLoading, setIsLoading] = useState(false);
 
-
+    // * Here we are setting the default base coin and compare coin to the first two coins in the list.
     useEffect(() => {
         if (cryptoData && cryptoData.data && cryptoData.data.length > 1) {
             setBaseCoin(cryptoData.data[0].id);
@@ -87,26 +88,28 @@ export const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
     }, [baseCoin, compareCoin, cryptoData]);
 
 
+
+
+    // ? Base Coin Amount Function
     const handleBaseCoinAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
         const newValue = inputValue !== '' ? parseFloat(inputValue) : 0;
-        setBaseCoinAmount(newValue); // Update baseCoinAmount in the store
+        setBaseCoinAmount(newValue);
         setIsLoading(true);
     };
 
     useEffect(() => {
-        // Clear loading state after brief delay when user stops typing
         const timer = setTimeout(() => {
             setIsLoading(false);
         }, 500);
 
-        return () => clearTimeout(timer); // Cleanup on unmount or next key press
+        return () => clearTimeout(timer);
     }, [baseCoinAmount]);
 
+
+    //? Basecoin Function
     const handleBaseCoinChange = (value: string) => {
         const selectedCoinId = value;
-
-
         const selectedCoin = cryptoData.data.find(
             (coin) => Number(coin.id) === Number(selectedCoinId)
         );
@@ -122,7 +125,7 @@ export const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
         }
         setBaseCoinAmount(1);
     };
-
+    // * Compare Coin Function
     const handleCompareCoinChange = (value: string) => {
         const selectedCoinId = value;
         const selectedCoin = cryptoData.data.find(
@@ -147,8 +150,6 @@ export const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
         return <div>Loading...</div>;
     }
 
-
-
     const baseCoinData = cryptoData.data.find((coin) => coin.id === baseCoin);
     const compareCoinData = cryptoData.data.find(
         (coin) => coin.id === compareCoin
@@ -170,20 +171,21 @@ export const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
 
     return (
         <div>
-            <h1>Converter Calculator</h1>
             <div>
                 <div className=" mt-10 w-[700px]">
                     <div className="grid w-full max-w-sm items-center gap-1.5">
                         <Label htmlFor="email">Amount in Base Coin:</Label>
                         <Input
-                            value={baseCoinAmount.toString()} // Convert to string before passing to value prop
+                            value={baseCoinAmount.toString()}
                             onChange={handleBaseCoinAmountChange}
                             type="number"
                             id="baseCoinAmount"
                             placeholder="Enter the amount"
                         />
                     </div>
-                    <label className="" htmlFor="baseCoin">Base Coin:</label>
+                    <div className="h-8">
+
+                    </div>
                     <div className="flex gap-10">
                         <Select value={baseCoin} onValueChange={handleBaseCoinChange}>
                             <SelectTrigger className="w-[280px]">
@@ -203,6 +205,7 @@ export const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
                         <Button onClick={handleSwap} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             <SwapOutlined />
                         </Button>
+
                         <Select value={compareCoin} onValueChange={handleCompareCoinChange}>
                             <SelectTrigger className="w-[280px]">
                                 <SelectValue placeholder="Select a base coin" />

@@ -360,23 +360,11 @@ export default function CandlestickChart() {
     return (
         <React.Fragment>
             <div className={classes.FullHeightChartWrapper} style={{ background: appTheme.DarkIndigo }}>
-                <div style={{ display: "flex", flexDirection: "column", height: "80vh", width: "100%" }}>
-                    <div className="text-white " >
-                        <DropdownMenu >
-                            <DropdownMenuContent>
-                                <DropdownMenuLabel>PRICES</DropdownMenuLabel>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem >BTC</DropdownMenuItem>
-                                <DropdownMenuItem >ETH</DropdownMenuItem>
-                                <DropdownMenuItem >DOGE</DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </div>
-                    <div id={divElementId} style={{ flexBasis: "80%", flexGrow: 1, flexShrink: 1 }} />
+                <div style={{ display: "flex", flexDirection: "column", height: "50vh", width: "100%", }}>
+                    <div className="cursor-pointer" id={divElementId} style={{ flexBasis: "80%", flexGrow: 1, flexShrink: 1 }} />
                 </div>
             </div>
         </React.Fragment>
     );
 }
-
 

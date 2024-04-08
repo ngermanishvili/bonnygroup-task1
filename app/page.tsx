@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 import CryptoTable from '@/components/landing/crypto-table';
 import { HeroHighlightDemo } from '@/components/landing/hero';
 import type { CryptoDataType } from '@/types/crypto';
-import numeral from 'numeral';
 import LivePrice from '@/components/liveprice/page';
 import CandlestickChart from './test/page';
+import ConverterPage from './converter/page';
 
 export default function Cryptos() {
   const [data, setData] = useState<CryptoDataType[] | null>(null);
@@ -31,6 +31,8 @@ export default function Cryptos() {
 
 
 
+
+
   if (!data) {
     return <div className='flex justify-center items-center'>
       loading
@@ -41,6 +43,10 @@ export default function Cryptos() {
     <div>
 
       <HeroHighlightDemo />
+      <div className='flex justify-center items-center'>
+        <ConverterPage />
+
+      </div>
       <div className='w-full p-20 rounded-sm'>
         <div className='m-4'>
           <LivePrice />

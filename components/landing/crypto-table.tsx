@@ -1,15 +1,12 @@
 "use client"
 import React from 'react';
-import { Table } from 'antd';
 import { useRouter } from 'next/navigation';
+import { SparkAreaChart } from '@tremor/react';
+
+import { Table } from 'antd';
 import type { TableProps } from 'antd';
 import { CryptoDataType } from "@/types/crypto"
-import numeral from 'numeral';
-import { SparkAreaChart, SparkLineChart, SparkBarChart } from '@tremor/react';
 
-function classNames(...classes: any) {
-    return classes.filter(Boolean).join(' ');
-}
 
 
 const chartdata = [
@@ -117,10 +114,10 @@ const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
             key: 'test',
             render: (quote) => {
                 const performanceData = chartdata.map(entry => ({ day: entry.month, Performance: entry.Performance * quote.USD.volume_24h / 100 }));
-                const colors = quote.USD.volume_24h < 0 ? ['red'] : ['green']; // Red for negative, green for positive
+                const colors = quote.USD.volume_24h < 0 ? ['red'] : ['green'];
                 return (
                     <SparkAreaChart
-                        data={performanceData} // Using real data
+                        data={performanceData}
                         categories={['Performance']}
                         index={'month'}
                         colors={colors}
@@ -133,16 +130,22 @@ const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
     ]
 
     return (
-        <Table
-            rowKey={(record) => record.id?.toString() ?? ''}
-            onRow={(record: CryptoDataType) => ({
-                onClick: () => handleRowClick(record),
-            })}
-            columns={columns}
-            dataSource={data}
-            style={{ backgroundColor: '#f0f0f0' }} // Change background color as needed
+        <>
+            <p className=" uppercase m-8 text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+            > List of <span className='relative inline-block pb-1   px-1 rounded-lg bg-gradient-to-r from-indigo-200 to-purple-400 dark:from-indigo-500 dark:to-purple-500'>Cryptocurrencies</span>
+            </p>
 
-        />
+            <Table
+                rowKey={(record) => record.id?.toString() ?? ''}
+                onRow={(record: CryptoDataType) => ({
+                    onClick: () => handleRowClick(record),
+                })}
+                columns={columns}
+                dataSource={data}
+                style={{ backgroundColor: '#f0f0f0' }}
+
+            />
+        </>
 
     );
 };

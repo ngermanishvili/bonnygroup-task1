@@ -5,9 +5,6 @@ import React from "react";
 import { ESeriesType } from "scichart/types/SeriesType";
 
 async function initSciChart() {
-    // Create the SciChartSurface in the div 'scichart-root'
-    // The SciChartSurface, and webassembly context 'wasmContext' are paired. This wasmContext
-    // instance must be passed to other types that exist on the same surface.
     const { sciChartSurface, wasmContext } = await chartBuilder.build2DChart("scichart-root", {
         series: {
             type: ESeriesType.LineSeries,
@@ -16,7 +13,6 @@ async function initSciChart() {
                 yValues: [1, 4, 2, 6]
             }
         }
-        // That's it! You just created your first SciChartSurface!
     });
 }
 

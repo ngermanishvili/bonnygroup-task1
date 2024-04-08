@@ -1,6 +1,8 @@
 "use client"
+// IdPg.tsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from "next/navigation";
+import LineChart from '@/components/coininfo/chart';
 
 interface CoinData {
     id: string;
@@ -34,26 +36,29 @@ interface CoinData {
 
 const IdPg = () => {
     const params = useParams();
-    const [coinData, setCoinData] = useState<CoinData | null>(); // Specify the type or null
+    const [coinData, setCoinData] = useState<CoinData | null>(null);
 
     useEffect(() => {
         if (params.id) {
             fetch(`/api/prices/${params.id}`)
                 .then(response => response.json())
                 .then(data => {
-                    // Extract the coin data using params.id as the key
                     const coin = data.data[params.id as keyof typeof data.data];
                     setCoinData(coin);
-                    console.log('Fetched coin data:', coin); // Log fetched data
+
+                    console.log('Fetched coin data:', coin);
                 })
                 .catch(error => console.error('Error fetching coin data:', error));
         }
     }, [params.id]);
 
-    console.log(coinData);
-
     return (
         <div>
+            {coinData && <LineChart
+                lastUpdated={coinData.quote.USD.last_updated}
+                price={coinData.quote.USD.price}
+                volume_24h={coinData.quote.USD.volume_24h}
+            />}
             <div>
                 <p className='text-black'>
                     {coinData?.name}

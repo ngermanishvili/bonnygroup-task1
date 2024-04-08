@@ -25,6 +25,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.24",
+    "highcharts": "^11.4.1",
+    "highcharts-react-official": "^3.2.1",
     "mini-svg-data-uri": "^1.4.4",
     "next": "14.1.4",
     "numeral": "^2.0.6",
