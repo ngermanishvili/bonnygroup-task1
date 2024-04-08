@@ -2,7 +2,9 @@
 export interface CryptoDataType {
     id?: number;
     data: CryptoData[];
+    symbol: string;
 }
+
 
 export interface CryptoData {
     id: string;

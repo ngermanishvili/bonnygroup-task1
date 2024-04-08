@@ -28,6 +28,7 @@ const chartdata = [
 
 interface CryptoTableProps {
     data: CryptoDataType[];
+
 }
 
 const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
@@ -36,7 +37,7 @@ const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
 
 
     const handleRowClick = (record: CryptoDataType) => {
-        router.push(`/info/${record.id}`);
+        router.push(`/info/${record.id}-${record.symbol}USDT`);
     };
 
     const columns: TableProps<CryptoDataType>['columns'] = [

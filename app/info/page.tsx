@@ -55,7 +55,7 @@ const IdPg = () => {
 
     return (
         <div>
-            <CandlestickChart coinId="ETHUSDT" />
+            <CandlestickChart coinId="BTCUSDT" />
         </div>
     );
 }

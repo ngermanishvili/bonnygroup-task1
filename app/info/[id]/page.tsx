@@ -39,6 +39,11 @@ const CoinData2 = () => {
     const params = useParams();
     const [coinData, setCoinData] = useState<CoinData | null>(null);
 
+    const id = (params.id as string).split('-')[0];
+
+    const usdt = (params.id as string).split('-')[1];
+
+
     useEffect(() => {
         if (params.id) {
             fetch(`/api/prices/${params.id}`)
@@ -55,7 +60,7 @@ const CoinData2 = () => {
 
     return (
         <div>
-            <CandlestickChart coinId="ETHUSDT" />
+            <CandlestickChart coinId={usdt} />
         </div>
     );
 }
