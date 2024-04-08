@@ -51,8 +51,7 @@ const drawExample = async (coinId: any) => {
     const { sciChartSurface, wasmContext } = await SciChartSurface.create(divElementId, {
         theme: appTheme.SciChartJsTheme
     });
-    SciChartSurface.setRuntimeLicenseKey("eBa35A+HZv+qvOVFtBmDmE432TXQeAvqSBHnf2qTTYh1RpcOzEXvvsAWDK2wmufFLOV65OEulZhr12Z4XurdfSDBw9aY8uUp8VGu/dTw8oPqPmhO2BUfaP9G/NDvjzoAtVsvddWc7pblOUWWJRLFnXy6V0oAPrNFbYjcCIpcDR+s0OD56aeETczJXU9L6DokC5H2unxvGggulkhzjotcLpPezBF8rtwZNrBvX8+4NOK5fRPaxOYNFrHqWR6VDfh6NuDsSlLOPb0peTNl2k3GiRPfgY1PulN61qZODsi0RTeRM0EC1pmhQ7y8rFyQ0ckWLRAocGHUWH9qFs2UYVjI647FMtbyGi3TPLkAi7vKFuakqccdiwaMCdqHP1p6M1ryr86siGBARxRuLIeEG2Yl2okfRaOrwyEoo8Xf6GdArutb3ijDcaGvCI2Xkeo8GESWqzbwtGnMlyaXUvN7JFAw8ETM9vC2O7Zfido4gXKPZXFvD6ukACO3V38wj0+YWIED0GSRye6cmijramKSvG4jVsG5sKp9k07oxUcTfn11IVj7xa4gG1KuPE3NbkLVyPEPmAX5zr8eY42vZP3/K4vaLa49l7fdWbgaJ/ULuPMhxAJGb36pL6xESvnSUbvwqxnek3eO4/9slnkv4NCmYYZw7VvVFFu06TFUo+IDqL1/t4+vGO3YhQ==");
-
+    SciChartSurface.setRuntimeLicenseKey(process.env.LICENSE_KEY || "");
 
 
 
