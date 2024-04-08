@@ -9,7 +9,11 @@
     },
     {
       "from": "./node_modules/scichart/_wasm/scichart2d.wasm",
-      "to": "./.next/static/chunks/"
+      "to": "./_next/static/chunks/scichart2d.wasm"
+    },
+    {
+      "from": "./node_modules/scichart/_wasm/scichart2d.wasm",
+      "to": "./_next/static/chunks/app/scichart2d.wasm"
     }
   ]
 }
