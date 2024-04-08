@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "next/navigation";
 import LineChart from '@/components/coininfo/chart';
-import CandlestickChart from '../test/page';
+import CandlestickChart from '@/components/candlestick/candlestick-chart';
 import useCoinIdStore from '@/store/coinid-store';
 
 interface CoinData {

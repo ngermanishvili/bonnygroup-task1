@@ -1,11 +1,10 @@
 "use client"
-
 import React, { useEffect, useState } from 'react';
 import CryptoTable from '@/components/landing/crypto-table';
 import { HeroHighlightDemo } from '@/components/landing/hero';
 import type { CryptoDataType } from '@/types/crypto';
 import LivePrice from '@/components/liveprice/page';
-import CandlestickChart from './test/page';
+import CandlestickChart from '@/components/candlestick/candlestick-chart';
 import ConverterPage from './converter/page';
 
 const Cryptos = () => {

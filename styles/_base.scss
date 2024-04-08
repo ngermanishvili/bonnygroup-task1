@@ -1,4 +1,7 @@
+// Import mixins
 @import "./mixins.scss";
+
+// Variables
 $color-primary-grey: #bac0c6;
 $color-primary-light-grey: #f9fafa;
 $color-primary-dark-grey: #98a4af;
@@ -43,58 +46,69 @@ $gradient-btn-dark: linear-gradient(
 );
 $gradient-blue: linear-gradient(90deg, #29aade, #44b6ce, #64c5bb);
 
-//Media
-$bp-xl: 120em; //1920
-$bp-lg: 91.25em; //1460
-$bp-md: 60em; //960/16px=60em
-$bp-sm: 37.5em; //600px/16px=37.5em
-$bp-xs: 28.125em; // 450
+// Media breakpoints
+$bp-xl: 120em; // 1920px
+$bp-lg: 91.25em; // 1460px
+$bp-md: 60em; // 960px
+$bp-sm: 37.5em; // 600px
+$bp-xs: 28.125em; // 450px
 $bp-xxs: 0;
 
-// spacing
+// Spacing
 $app-bar-height: 68px;
 $default-spacing: 8px;
 $default-border-radius: 10px;
-//
+
+// Mixin for container styles
 %Container {
   max-width: 2300px;
   padding: 0 20px;
+
   @include lg {
     max-width: 1600px;
   }
+
   @include md {
     max-width: 1200px;
-
     padding: 0 10px;
   }
 }
-html {
-  box-sizing: border-box;
 
-  height: 100%;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
-  h1 {
-    line-height: 1.167;
-  }
-  h4 {
-    font-size: 2.125rem;
-    font-weight: 400;
-    line-height: 1.235;
-  }
+// Page-level styles
+.page-styles {
+  // Define global styles for HTML element
+  html {
+    box-sizing: border-box;
+    height: 100%;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol";
 
-  h6 {
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 1.6;
+    h1 {
+      line-height: 1.167;
+    }
+
+    h4 {
+      font-size: 2.125rem;
+      font-weight: 400;
+      line-height: 1.235;
+    }
+
+    h6 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.6;
+    }
   }
 }
+
+// Container class
 .container {
   width: 100%;
   @extend %Container;
 }
 
+// Mixin for adding bottom margin
 %gutter-bottom {
   margin-bottom: 0.35em;
 }

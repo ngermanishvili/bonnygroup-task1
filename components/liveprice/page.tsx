@@ -27,7 +27,7 @@ const LivePrice = () => {
                 };
 
                 ws.onerror = (error) => {
-                    console.error(`WebSocket error for ${symbol}: `, error);
+                    // console.error(`WebSocket error for ${symbol}: `, error);
                 };
             });
             setTimeout(() => {
