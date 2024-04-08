@@ -8,11 +8,8 @@ import LivePrice from '@/components/liveprice/page';
 import { CandlestickChart } from './test/page';
 import ConverterPage from './converter/page';
 
-
-export default function Cryptos({ coinId }: { coinId: string }) {
+const Cryptos = () => {
   const [data, setData] = useState<CryptoDataType[] | null>(null);
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -60,3 +57,5 @@ export default function Cryptos({ coinId }: { coinId: string }) {
     </div>
   );
 }
+
+export default Cryptos;
