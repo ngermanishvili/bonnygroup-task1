@@ -21,6 +21,11 @@ export default {
                 { from: "node_modules/scichart/_wasm/scichart2d.wasm", to: destWasmFolder + "/static/chunks/app" },
             ]
         }));
+        config.plugins.push(new CopyPlugin({
+            patterns: [
+                { from: "node_modules/scichart/_wasm/scichart2d.wasm", to: destWasmFolder + "/static/chunks/" },
+            ]
+        }));
 
         // Important: return the modified config
         return config;
