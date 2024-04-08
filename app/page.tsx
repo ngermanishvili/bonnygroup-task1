@@ -40,10 +40,6 @@ const Cryptos = () => {
     <div>
 
       <HeroHighlightDemo />
-      <div className='flex justify-center items-center'>
-        <ConverterPage />
-
-      </div>
       <div className='w-full p-20 rounded-sm'>
         <div className='m-4'>
           <LivePrice />

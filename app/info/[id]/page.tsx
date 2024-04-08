@@ -2,10 +2,11 @@
 // app/info/id page
 import React, { useEffect, useState } from 'react';
 import { useParams } from "next/navigation";
-import LineChart from '@/components/coininfo/chart';
 import CandlestickChart from "@/components/candlestick/candlestick-chart";
 import useCoinIdStore from '@/store/coinid-store';
 import { CoinData } from '@/types/coins';
+import PriceBlocks from '@/components/percoindata/per-coin-data';
+import { Globe } from '@/components/ui/globe';
 
 
 
@@ -36,7 +37,8 @@ const CoinData2 = () => {
     }, [params.id]);
 
     return (
-        <div>
+        <div className='mt-8'>
+            <PriceBlocks />
             <CandlestickChart />
         </div>
     );

@@ -9,7 +9,7 @@ const World = dynamic(() => import("../ui/globe").then((m) => m.World), {
 
 export function GlobeDemo() {
     const globeConfig = {
-        pointSize: 4,
+        pointSize: 2,
         globeColor: "#062056",
         showAtmosphere: true,
         atmosphereColor: "#FFFFFF",
@@ -395,8 +395,8 @@ export function GlobeDemo() {
     ];
 
     return (
-        <div className="flex flex-row items-center justify-center py-20 h-screen md:h-auto dark:bg-black bg-white relative w-full">
-            <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
+        <div className="flex flex-row items-end justify-center py-20 h-screen md:h-auto dark:bg-black bg-white relative w-full">
+            <div className="max-w-2xl mx-auto w-full relative overflow-hidden h-full md:h-[35rem] px-4">
                 <motion.div
                     initial={{
                         opacity: 0,
