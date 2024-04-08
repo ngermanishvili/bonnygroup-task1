@@ -315,7 +315,7 @@ class VolumePaletteProvider implements IFillPaletteProvider {
 }
 
 // React component needed as our examples app is react.
-export const CandlestickChart = ({ coinId }: { coinId: any }) => {
+const CandlestickChart = ({ coinId }: { coinId: any }) => {
     const sciChartSurfaceRef = React.useRef<SciChartSurface>();
     const sciChartOverviewRef = React.useRef<SciChartOverview>();
     const [candlestickChartSeries, setCandlestickChartSeries] = React.useState<FastCandlestickRenderableSeries>();
@@ -396,3 +396,5 @@ export const CandlestickChart = ({ coinId }: { coinId: any }) => {
         </React.Fragment>
     );
 }
+
+export default CandlestickChart;
