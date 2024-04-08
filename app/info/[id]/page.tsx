@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "next/navigation";
 import LineChart from '@/components/coininfo/chart';
 import CandlestickChart from '@/app/test/page';
+import useCoinIdStore from '@/store/coinid-store';
 
 interface CoinData {
     id: string;
@@ -36,12 +37,14 @@ interface CoinData {
 }
 
 const CoinData2 = () => {
+    const setCoinId = useCoinIdStore(state => state.setCoinId);
     const params = useParams();
     const [coinData, setCoinData] = useState<CoinData | null>(null);
 
     const id = (params.id as string).split('-')[0];
 
     const usdt = (params.id as string).split('-')[1];
+    setCoinId(usdt);
 
 
     useEffect(() => {
@@ -60,7 +63,7 @@ const CoinData2 = () => {
 
     return (
         <div>
-            <CandlestickChart coinId={usdt} />
+            <CandlestickChart />
         </div>
     );
 }

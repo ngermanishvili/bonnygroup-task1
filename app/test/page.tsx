@@ -40,6 +40,7 @@ import {
 } from "scichart";
 import { appTheme, simpleBinanceRestClient } from "scichart-example-dependencies";
 import classes from "../styles/Examples.module.css";
+import useCoinIdStore from "@/store/coinid-store";
 
 
 const divElementId = "chart";
@@ -309,10 +310,11 @@ class VolumePaletteProvider implements IFillPaletteProvider {
         return this.overrideFillArgb(xValue, yValue, index, opacity, metadata);
     }
 }
-/* eslint-disable */
 
 // React component needed as our examples app is react.
-const CandlestickChart = ({ coinId }: { coinId: any }) => {
+export default function CandlestickChart() {
+
+    const coinId = useCoinIdStore((state) => state.coinId);
     const sciChartSurfaceRef = React.useRef<SciChartSurface>();
     const sciChartOverviewRef = React.useRef<SciChartOverview>();
     const [candlestickChartSeries, setCandlestickChartSeries] = React.useState<FastCandlestickRenderableSeries>();
@@ -394,4 +396,3 @@ const CandlestickChart = ({ coinId }: { coinId: any }) => {
     );
 }
 
-export default CandlestickChart;

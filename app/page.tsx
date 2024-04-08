@@ -49,7 +49,7 @@ const Cryptos = () => {
         <div className='m-4'>
           <LivePrice />
         </div>
-        <CandlestickChart coinId="ETHUSDT" />
+        <CandlestickChart />
         <CryptoTable data={data} />
       </div>
 

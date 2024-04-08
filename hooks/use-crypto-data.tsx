@@ -5,7 +5,7 @@ import axios from "axios";
 import { CryptoDataType } from "@/types/crypto";
 
 function useCryptoData() {
-    const [cryptoData, setCryptoData] = useState<CryptoDataType | null>({ data: [] });
+    const [cryptoData, setCryptoData] = useState<CryptoDataType | null>({ data: [], symbol: "" });
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {

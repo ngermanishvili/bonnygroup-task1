@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "next/navigation";
 import LineChart from '@/components/coininfo/chart';
 import CandlestickChart from '../test/page';
+import useCoinIdStore from '@/store/coinid-store';
 
 interface CoinData {
     id: string;
@@ -36,6 +37,7 @@ interface CoinData {
 }
 
 const IdPg = () => {
+    const setCoinId = useCoinIdStore(state => state.setCoinId);
     const params = useParams();
     const [coinData, setCoinData] = useState<CoinData | null>(null);
 
@@ -55,7 +57,7 @@ const IdPg = () => {
 
     return (
         <div>
-            <CandlestickChart coinId="BTCUSDT" />
+            <CandlestickChart />
         </div>
     );
 }
