@@ -5,10 +5,10 @@ import CryptoTable from '@/components/landing/crypto-table';
 import { HeroHighlightDemo } from '@/components/landing/hero';
 import type { CryptoDataType } from '@/types/crypto';
 import LivePrice from '@/components/liveprice/page';
-import CandlestickChart from './test/page';
+import { CandlestickChart } from './test/page';
 import ConverterPage from './converter/page';
 
-export default function Cryptos() {
+export default function Cryptos({ coindId }: { coindId: string }) {
   const [data, setData] = useState<CryptoDataType[] | null>(null);
 
 
@@ -51,7 +51,7 @@ export default function Cryptos() {
         <div className='m-4'>
           <LivePrice />
         </div>
-        <CandlestickChart />
+        <CandlestickChart coinId="ETHUSDT" />
         <CryptoTable data={data} />
       </div>
 

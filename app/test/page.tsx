@@ -37,27 +37,23 @@ import {
 } from "scichart";
 import { appTheme, simpleBinanceRestClient } from "scichart-example-dependencies";
 import classes from "../styles/Examples.module.css";
-import { Button } from "@/components/ui/button"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+
 
 const divElementId = "chart";
 // const divOverviewId = "overview";
 const Y_AXIS_VOLUME_ID = "Y_AXIS_VOLUME_ID";
 
 // SCICHART EXAMPLE
-const drawExample = async () => {
+
+const drawExample = async (coinId: any) => {
     // Create a SciChartSurface
 
     const { sciChartSurface, wasmContext } = await SciChartSurface.create(divElementId, {
         theme: appTheme.SciChartJsTheme
     });
+
+
+
     function updateChartWithData(priceBars: import("scichart-example-dependencies").TPriceBar[]) {
         if (!priceBars || priceBars.length === 0) return;
 
@@ -91,10 +87,9 @@ const drawExample = async () => {
             );
         }
 
-        // Update the chart's visible range if necessary
-        // Example: Update xAxis.visibleRange
+        // ? Update the chart's visible range if necessary
 
-        // Call invalidateElement to redraw the chart
+        // ? Call invalidateElement to redraw the chart
         sciChartSurface.invalidateElement();
     }
 
@@ -132,7 +127,7 @@ const drawExample = async () => {
     startDate.setHours(endDate.getHours() - 300);
 
     // Fetch initial data for DOGE
-    const priceBars = await simpleBinanceRestClient.getCandles(`BTCUSDT`, "1h", startDate, endDate);
+    const priceBars = await simpleBinanceRestClient.getCandles(coinId, "1h", startDate, endDate);
 
     const dogePriceBars = await simpleBinanceRestClient.getCandles("DOGEUSDT", "1h", startDate, endDate);
 
@@ -166,13 +161,15 @@ const drawExample = async () => {
 
     // Create and add the Candlestick series
     // The Candlestick Series requires a special dataseries type called OhlcDataSeries with o,h,l,c and date values
+    // const dataSeriesName = `${coinId.toUpperCase()}/`;
+
     const candleDataSeries = new OhlcDataSeries(wasmContext, {
         xValues,
         openValues,
         highValues,
         lowValues,
         closeValues,
-        dataSeriesName: "BTC/USDT"
+        dataSeriesName: "Price Series"
 
     });
 
@@ -317,17 +314,38 @@ class VolumePaletteProvider implements IFillPaletteProvider {
 }
 
 // React component needed as our examples app is react.
-export default function CandlestickChart() {
+export const CandlestickChart = ({ coinId }: { coinId: any }) => {
     const sciChartSurfaceRef = React.useRef<SciChartSurface>();
     const sciChartOverviewRef = React.useRef<SciChartOverview>();
     const [candlestickChartSeries, setCandlestickChartSeries] = React.useState<FastCandlestickRenderableSeries>();
     const [ohlcChartSeries, setOhlcChartSeries] = React.useState<FastOhlcRenderableSeries>();
 
 
+    const [priceBars, setPriceBars] = React.useState<any[]>([]);
+    const [loading, setLoading] = React.useState<boolean>(true);
+    const [error, setError] = React.useState<string>('');
+
+    useEffect(() => {
+        const fetchPriceBars = async () => {
+            try {
+                const endDate = new Date(Date.now());
+                const startDate = new Date();
+                startDate.setHours(endDate.getHours() - 300);
+                const response = await simpleBinanceRestClient.getCandles(coinId, "1h", startDate, endDate);
+                setPriceBars(response);
+                setLoading(false);
+            } catch (error) {
+                setError('Error fetching price bars');
+                setLoading(false);
+            }
+        };
+
+        fetchPriceBars();
+    }, [coinId]);
 
 
     React.useEffect(() => {
-        const chartInitializationPromise = drawExample().then(
+        const chartInitializationPromise = drawExample(coinId).then(
             ({ sciChartSurface, candlestickSeries, ohlcSeries }) => {
                 setCandlestickChartSeries(candlestickSeries);
                 setOhlcChartSeries(ohlcSeries);
@@ -354,6 +372,16 @@ export default function CandlestickChart() {
         };
     }, []);
 
+    const idToCoinName: { [id: string]: string } = {
+        "1": "BTCUSDT",
+        "1027": "ETHUSDT",
+        "1839": "BNBUSDT"
+        // Add more mappings as needed
+    };
+
+    // Get the coin name corresponding to the provided coinId
+    const coinName = idToCoinName[coinId];
+
 
 
 
@@ -367,4 +395,3 @@ export default function CandlestickChart() {
         </React.Fragment>
     );
 }
-

@@ -1,8 +1,9 @@
 "use client"
-// IdPg.tsx
+// app/info/id page
 import React, { useEffect, useState } from 'react';
 import { useParams } from "next/navigation";
 import LineChart from '@/components/coininfo/chart';
+import { CandlestickChart } from '@/app/test/page';
 
 interface CoinData {
     id: string;
@@ -34,7 +35,7 @@ interface CoinData {
     };
 }
 
-const IdPg = () => {
+const CoinData2 = () => {
     const params = useParams();
     const [coinData, setCoinData] = useState<CoinData | null>(null);
 
@@ -54,18 +55,9 @@ const IdPg = () => {
 
     return (
         <div>
-            {coinData && <LineChart
-                lastUpdated={coinData.quote.USD.last_updated}
-                price={coinData.quote.USD.price}
-                volume_24h={coinData.quote.USD.volume_24h}
-            />}
-            <div>
-                <p className='text-black'>
-                    {coinData?.name}
-                </p>
-            </div>
+            <CandlestickChart coinId="ETHUSDT" />
         </div>
     );
 }
 
-export default IdPg;
+export default CoinData2;

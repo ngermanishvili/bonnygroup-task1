@@ -6,11 +6,6 @@
     {
       "from": "./node_modules/scichart/_wasm/scichart2d.data",
       "to": "./public/scichart2d.data"
-    },
-
-    {
-      "from": "./node_modules/scichart/_wasm/scichart2d.wasm",
-      "to": "_next/static/chunks"
     }
   ]
 }
