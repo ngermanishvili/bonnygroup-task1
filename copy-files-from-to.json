@@ -13,7 +13,8 @@
     },
     {
       "from": "./node_modules/scichart/_wasm/scichart2d.wasm",
-      "to": "./.next/static/chunks/app/info/[id]/scichart2d.wasm"
+      "to": "./.next/static/chunks/app/info/[id]/scichart2d.wasm",
+      "skip": true
     }
   ]
 }
