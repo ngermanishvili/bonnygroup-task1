@@ -9,10 +9,7 @@ import { CandlestickChart } from './test/page';
 import ConverterPage from './converter/page';
 
 
-interface CryptosProps {
-  coinId: any;
-}
-export const Cryptos: React.FC<CryptosProps> = ({ coinId }) => {
+export default function Cryptos({ coinId }: { coinId: string }) {
   const [data, setData] = useState<CryptoDataType[] | null>(null);
 
 
