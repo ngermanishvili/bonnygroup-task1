@@ -33,6 +33,8 @@ interface CryptoData {
     }[];
 }
 
+//
+
 interface ConverterProps {
     cryptoData: CryptoData;
 }
@@ -90,7 +92,7 @@ export const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
 
 
 
-    // ? Base Coin Amount Function
+    // ? Base Coin Amount Function implementation
     const handleBaseCoinAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
         const newValue = inputValue !== '' ? parseFloat(inputValue) : 0;
