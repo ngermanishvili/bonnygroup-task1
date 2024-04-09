@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-const apiKey = '0a794595-fb8c-461c-84f1-50433b7a8052'; // IT'S TECHNICAL SO NO ENV :  )
+const apiKey = process.env.COINMARKETCAP_API_KEY as string;
 
 export async function GET(req: Request, res: Response) {
     try {

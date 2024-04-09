@@ -8,13 +8,10 @@ export default {
         },
     },
     basePath: '',
-    restrictMode: false, // Add this line to disable restrict mode
-    assetPrefix: '', // Remove asset prefix
+    restrictMode: false,
+    assetPrefix: '',
 
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-        // Note: we provide webpack above so you should not `require` it
-        // Perform customizations to webpack config
-
         const destWasmFolder = "."
         config.plugins.push(new CopyPlugin({
             patterns: [
@@ -26,8 +23,6 @@ export default {
                 { from: "node_modules/scichart/_wasm/scichart2d.wasm", to: destWasmFolder + "/static/chunks/" },
             ]
         }));
-
-        // Important: return the modified config
         return config;
     },
 };

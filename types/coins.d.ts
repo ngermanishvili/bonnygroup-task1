@@ -1,5 +1,3 @@
-// types/coinTypes.ts
-
 export interface Quote {
     USD: {
         price: number;

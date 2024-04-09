@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import CryptoTable from '@/components/landing/crypto-table';
+import CryptoTable from "@/components/table/crypto-table"
 import { HeroHighlightDemo } from '@/components/landing/hero';
 import LivePrice from '@/components/liveprice/page';
 import CandlestickChart from '@/components/candlestick/candlestick-chart';

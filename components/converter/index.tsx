@@ -1,12 +1,11 @@
 "use client"
 import { Button } from "@/components/ui/button";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useConverterStore from "../../store/converter-store";
 
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { LoadingOutlined, SwapOutlined } from '@ant-design/icons';
-import { Spin } from 'antd';
 
 
 import {
@@ -32,9 +31,6 @@ interface CryptoData {
         };
     }[];
 }
-
-//
-
 interface ConverterProps {
     cryptoData: CryptoData;
 }
@@ -164,7 +160,6 @@ export const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
     const amountInCompareCoin = baseCoinAmount * exchangeRate;
 
     const handleSwap = () => {
-        // Swap the values of baseCoin and compareCoin
         const tempCoin = baseCoin;
         setBaseCoin(compareCoin);
         setCompareCoin(tempCoin);

@@ -1,7 +1,7 @@
 "use client";
 // app/info/id page
 import CandlestickChart from "@/components/candlestick/candlestick-chart";
-import { GlobeDemo } from '@/components/landing/globe';
+import { GlobeDemo } from '@/components/ui/globe-test';
 import { HeroHighlight, Highlight } from '@/components/ui/hero-highlight';
 import { BadgeDelta, Card, Divider } from '@tremor/react';
 import { motion } from "framer-motion";

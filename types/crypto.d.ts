@@ -5,7 +5,6 @@ export interface CryptoDataType {
     symbol: string;
 }
 
-
 export interface CryptoData {
     id: string;
     name: string;
@@ -22,12 +21,6 @@ export interface CryptoData {
     };
 }
 
-// Adjust your useState initialization to match the interface
 const [cryptoData, setCryptoData] = useState<CryptoDataType>({ data: [] });
-
-// Assuming you're not using the 'id' property in your application logic, you can ignore it
-// when setting the state
 setCryptoData({ data: response.data });
-
-// Or if you need to assign a default value to the 'id' property
 setCryptoData({ id: 0, data: response.data });

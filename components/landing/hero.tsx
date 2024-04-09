@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "../ui/hero-highlight";
-import { GlobeDemo } from "./globe";
 import ConverterPage from "@/app/converter/page";
 
 
@@ -37,14 +36,7 @@ export function HeroHighlightDemo() {
             </div>
             <div className="flex justify-center items-center">
                 <ConverterPage />
-
             </div>
-
-
-
-            {/* <GlobeDemo /> */}
-
-
         </>
 
     );
