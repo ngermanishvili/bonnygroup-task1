@@ -2,12 +2,6 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { PUBLIC_ROUTES } from '@/routes'
 import Link from 'next/link'
-const navigation = [
-    { name: 'Test', href: '#', current: true },
-    { name: 'Crypto Convert', href: '/converter', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
-]
 
 function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ')
@@ -128,19 +122,15 @@ export default function ExampleNavbar() {
 
                     <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 px-2 pb-3 pt-2">
-                            {navigation.map((item) => (
-                                <Disclosure.Button
-                                    key={item.name}
-                                    as="a"
-                                    href={item.href}
-                                    className={classNames(
-                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                        'block rounded-md px-3 py-2 text-base font-medium'
-                                    )}
-                                    aria-current={item.current ? 'page' : undefined}
-                                >
-                                    {item.name}
-                                </Disclosure.Button>
+                            {PUBLIC_ROUTES.map((route) => (
+                                <Link key={route.path} href={route.path}>
+                                    <p className={classNames(
+                                        'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                        'rounded-md px-3 py-2 text-sm font-medium uppercase'
+                                    )}>
+                                        {route.path === '/' ? 'Home' : route.path.substring(1)}
+                                    </p>
+                                </Link>
                             ))}
                         </div>
                     </Disclosure.Panel>

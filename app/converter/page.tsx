@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import { Converter } from "@/components/converter";
+import { Converter } from "@/components/converter/price-convert";
 import useCryptoData from "@/hooks/use-crypto-data";
 import SpinComponent from "@/components/ui/spin-antd";
 

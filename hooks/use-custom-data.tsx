@@ -18,7 +18,6 @@ const useCoinData = () => {
                 .then(data => {
                     const coin = data.data[id as keyof typeof data.data];
                     setCoinData(coin);
-                    console.log('Fetched coin data:', coin);
                 })
                 .catch(error => console.error('Error fetching coin data:', error));
         }

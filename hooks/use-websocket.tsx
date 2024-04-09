@@ -1,5 +1,4 @@
 "use client"
-
 import React, { useState, useEffect } from "react";
 import { Card } from '@tremor/react';
 import SpinComponent from "@/components/ui/spin-antd";

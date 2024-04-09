@@ -3,13 +3,10 @@ import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "../ui/hero-highlight";
 import ConverterPage from "@/app/converter/page";
 
-
 export function HeroHighlightDemo() {
     return (
         <>
             <div className="flex justify-between">
-
-
                 <HeroHighlight>
                     <motion.h1
                         initial={{
