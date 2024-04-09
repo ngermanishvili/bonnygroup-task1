@@ -395,8 +395,8 @@ export function GlobeDemo() {
     ];
 
     return (
-        <div className="flex flex-row items-end justify-center py-20 h-screen md:h-auto dark:bg-black bg-white relative w-full">
-            <div className="max-w-2xl mx-auto w-full relative overflow-hidden h-full md:h-[35rem] px-4">
+        <div className="flex flex-row items-start justify-start py-14 h-screen md:h-auto dark:bg-black bg-white relative w-full">
+            <div className="max-w-md mx-auto w-full relative h-full md:h-[25rem] px-4 mb-8">
                 <motion.div
                     initial={{
                         opacity: 0,
@@ -411,16 +411,9 @@ export function GlobeDemo() {
                     }}
                     className="div"
                 >
-                    <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
-                        We sell soap worldwide
-                    </h2>
-                    <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
-                        This globe is interactive and customizable. Have fun with it, and
-                        don&apos;t forget to share it. :)
-                    </p>
                 </motion.div>
-                <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
-                <div className="absolute w-full -bottom-20 h-72 md:h-full z-10">
+                <div className="absolute w-full left-0 bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent  z-40" />
+                <div className="absolute left-0 w-full  -bottom-20 h-72 md:h-full z-10">
                     <World data={sampleArcs} globeConfig={globeConfig} />;
                 </div>
             </div>

@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import CandlestickChart from "@/components/candlestick/candlestick-chart";
 import useCoinIdStore from '@/store/coinid-store';
 import { CoinData } from '@/types/coins';
-import PriceBlocks from '@/components/percoindata/per-coin-data';
 import { Globe } from '@/components/ui/globe';
 
 
@@ -16,7 +15,6 @@ const CoinData2 = () => {
     const params = useParams();
     const [coinData, setCoinData] = useState<CoinData | null>(null);
 
-    const id = (params.id as string).split('-')[0];
 
     const usdt = (params.id as string).split('-')[1];
     setCoinId(usdt);
@@ -24,10 +22,13 @@ const CoinData2 = () => {
 
     useEffect(() => {
         if (params.id) {
-            fetch(`/api/prices/${params.id}`)
+            const id = (params.id as string).split('-')[0];
+            console.log("es aris id", typeof id)
+
+            fetch(`/api/prices/${id}`)
                 .then(response => response.json())
                 .then(data => {
-                    const coin = data.data[params.id as keyof typeof data.data];
+                    const coin = data.data[id as keyof typeof data.data];
                     setCoinData(coin);
 
                     console.log('Fetched coin data:', coin);
@@ -38,7 +39,7 @@ const CoinData2 = () => {
 
     return (
         <div className='mt-8'>
-            <PriceBlocks />
+            {coinData?.name} {coinData?.quote.USD.price} {coinData?.quote.USD.percent_change_24h}
             <CandlestickChart />
         </div>
     );

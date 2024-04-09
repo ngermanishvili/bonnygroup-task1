@@ -174,7 +174,7 @@ export const Converter: React.FC<ConverterProps> = ({ cryptoData }) => {
     return (
         <div>
             <div>
-                <div className=" mt-10 w-[700px]">
+                <div className=" w-[700px]">
                     <div className="grid w-full max-w-sm items-center gap-1.5">
                         <Label htmlFor="email">Amount in Base Coin:</Label>
                         <Input

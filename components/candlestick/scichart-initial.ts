@@ -47,6 +47,7 @@ export const drawExample = async (coinId: string) => {
             volumeValues.push(priceBar.volume);
         });
 
+
         const candleDataSeries = new OhlcDataSeries(wasmContext, {
             xValues,
             openValues,

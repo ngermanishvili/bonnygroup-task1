@@ -7,7 +7,7 @@ import { FastCandlestickRenderableSeries, FastOhlcRenderableSeries, SciChartOver
 import { simpleBinanceRestClient, appTheme } from "scichart-example-dependencies";
 import classes from "@/styles/Examples.module.scss";
 
-const divElementId = "chart";
+const divElementId = "chart"; // this chart path is 
 
 const CandlestickChart = () => {
     const coinId = useCoinIdStore((state) => state.coinId);
@@ -75,11 +75,13 @@ const CandlestickChart = () => {
     // Get the coin name corresponding to the provided coinId
     const coinName = idToCoinName[coinId];
 
+
+
     return (
         <React.Fragment>
-            <div className={classes.FullHeightChartWrapper} style={{ background: appTheme.DarkIndigo }}>
+            <div className={classes.FullHeightChartWrapper} style={{ background: '#000000' }} >
                 <div style={{ display: "flex", flexDirection: "column", height: "50vh", width: "100%", }}>
-                    <div className="cursor-pointer" id={divElementId} style={{ flexBasis: "80%", flexGrow: 1, flexShrink: 1 }} />
+                    <div className="cursor-pointer" id={divElementId} style={{ flexBasis: "80%", flexGrow: 1, flexShrink: 1, backgroundColor: "#000000" }} />
                 </div>
             </div>
         </React.Fragment>
