@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-// import { Bars3Icon, BellIcon, XMarkIcon } from "antd"
-
+import { PUBLIC_ROUTES } from '@/routes'
+import Link from 'next/link'
 const navigation = [
     { name: 'Test', href: '#', current: true },
     { name: 'Crypto Convert', href: '/converter', current: false },
@@ -44,18 +44,15 @@ export default function ExampleNavbar() {
                                 </div>
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
-                                        {navigation.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                    'rounded-md px-3 py-2 text-sm font-medium'
-                                                )}
-                                                aria-current={item.current ? 'page' : undefined}
-                                            >
-                                                {item.name}
-                                            </a>
+                                        {PUBLIC_ROUTES.map((route) => (
+                                            <Link key={route.path} href={route.path}>
+                                                <p className={classNames(
+                                                    'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                    'rounded-md px-3 py-2 text-sm font-medium uppercase'
+                                                )}>
+                                                    {route.path === '/' ? 'Home' : route.path.substring(1)}
+                                                </p>
+                                            </Link>
                                         ))}
                                     </div>
                                 </div>
@@ -67,8 +64,6 @@ export default function ExampleNavbar() {
                                 >
                                     <span className="absolute -inset-1.5" />
                                     <span className="sr-only">View notifications</span>
-                                    {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
-
                                 </button>
 
                                 {/* Profile dropdown */}

@@ -6,7 +6,7 @@ interface LayoutProps {
 
 const Converter: React.FC<LayoutProps> = ({ children }) => {
     return (
-        <div>
+        <div className='flex justify-center items-center mt-[100px]'>
             {children}
         </div>
     );

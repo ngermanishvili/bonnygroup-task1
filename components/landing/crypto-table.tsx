@@ -22,6 +22,18 @@ const chartdata = [
         month: 'Mar 21',
         Performance: 2000,
     },
+    {
+        month: 'Mar 22',
+        Performance: 3000,
+    },
+    {
+        month: 'Mar 23',
+        Performance: 2500,
+    },
+    {
+        month: 'Mar 24',
+        Performance: 4000,
+    },
 
 ];
 
@@ -47,11 +59,7 @@ const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
             key: 'name',
             render: (text) => <a>{text}</a>,
         },
-        {
-            title: "id",
-            dataIndex: "id",
-            key: "id"
-        },
+
         {
             title: 'Symbol',
             dataIndex: 'symbol',
@@ -132,20 +140,22 @@ const CryptoTable: React.FC<CryptoTableProps> = ({ data }) => {
 
     return (
         <>
-            <p className=" uppercase m-8 text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
-            > List of <span className='relative inline-block pb-1   px-1 rounded-lg bg-gradient-to-r from-indigo-200 to-purple-400 dark:from-indigo-500 dark:to-purple-500'>Cryptocurrencies</span>
-            </p>
+            <div style={{ overflowX: 'auto' }}>
+                <p className=" uppercase m-8 text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+                > List of <span className='relative inline-block pb-1   px-1 rounded-lg bg-gradient-to-r from-indigo-200 to-purple-400 dark:from-indigo-500 dark:to-purple-500'>Cryptocurrencies</span>
+                </p>
 
-            <Table
-                rowKey={(record) => record.id?.toString() ?? ''}
-                onRow={(record: CryptoDataType) => ({
-                    onClick: () => handleRowClick(record),
-                })}
-                columns={columns}
-                dataSource={data}
-                style={{ backgroundColor: '#f0f0f0' }}
+                <Table
+                    rowKey={(record) => record.id?.toString() ?? ''}
+                    onRow={(record: CryptoDataType) => ({
+                        onClick: () => handleRowClick(record),
+                    })}
+                    columns={columns}
+                    dataSource={data}
+                    style={{ backgroundColor: '#f0f0f0' }}
 
-            />
+                />
+            </div>
         </>
 
     );
